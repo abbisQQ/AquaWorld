@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/fish_list_container">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_custom"
+        android:layout_marginEnd="@dimen/margin_custom"
+        android:layout_marginTop="@dimen/margin_custom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:id="@+id/list_image_view"
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_height"
+                android:background="@color/main_background"
+                android:src="@mipmap/ic_launcher_round" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/image_height"
+                android:textSize="@dimen/text_small"
+                android:id="@+id/list_name_text_view"
+                tools:text="Hello"
+                android:textColor="@color/text_color"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</FrameLayout>

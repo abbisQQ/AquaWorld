@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">My Aqua World!</string>
+    <string name="title_activity_recycler_views_container">RecyclerViewsContainerActivity</string>
+
+
+    <string name="scientific_name">Sci/Name:</string>
+    <string name="common_name">Com/Name:</string>
+</resources>
