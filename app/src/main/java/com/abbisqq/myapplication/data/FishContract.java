@@ -28,8 +28,9 @@ public class FishContract {
 
 
 
-    public static final String TABLE_NAME_CICHLIDS = "cichlids";
+    public static final String TABLE_NAME_CICHLIDS = "Cichlids";
     public static final String TABLE_NAME_TETRAS = "Tetras";
+    public static final String TABLE_NAME_CATFISHES = "Catfish";
 
 
 }

@@ -37,21 +37,18 @@ public class PageViewContainerActivity extends FragmentActivity {
         //animation from left to right
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
-        // Instantiate a ViewPager and a PagerAdapter.
-        String mTableName = getIntent().getStringExtra("table_name");
-        int mPosition = getIntent().getIntExtra("position",5);
 
+        String mTableName = getIntent().getStringExtra("table_name");
+        int mPosition = getIntent().getIntExtra("position",0);
+
+
+        // Instantiate a ViewPager and a PagerAdapter.
         helper = new FishDatabaseHelper(this, mTableName);
         mCursor = helper.getFishes();
         mPager = (ViewPager) findViewById(R.id.my_view_pager);
         mPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mCursor);
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(mPosition);
-
-
-
-
-
 
 
     }
@@ -62,4 +59,6 @@ public class PageViewContainerActivity extends FragmentActivity {
         mCursor.close();
         helper.close();
     }
+
+
 }

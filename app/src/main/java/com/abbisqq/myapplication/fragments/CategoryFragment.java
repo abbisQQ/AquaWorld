@@ -1,6 +1,7 @@
 package com.abbisqq.myapplication.fragments;
 
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -23,6 +24,7 @@ import com.abbisqq.myapplication.R;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.abbisqq.myapplication.activities.FishListContainer;
 import com.abbisqq.myapplication.adapters.CategoryRecViewAdapter;
 import com.abbisqq.myapplication.data.FishContract;
 import com.abbisqq.myapplication.data.FishFamiliesData;
@@ -81,27 +83,13 @@ public class CategoryFragment extends Fragment implements CategoryRecViewAdapter
 
     @Override
     public void onItemClick(int p) {
-        switch (p) {
-            case 0:
-                Fragment fragment1 = FishListFragment.newInstance(FishContract.TABLE_NAME_CICHLIDS);
-                makingFragments(fragment1);
-                break;
-            case 1:
-                Fragment fragment2 = FishListFragment.newInstance(FishContract.TABLE_NAME_TETRAS);
-                makingFragments(fragment2);
-                break;
-        }
+        Intent intent = new Intent(getContext(), FishListContainer.class);
+        intent.putExtra("position",p);
+        startActivity(intent);
     }
 
 
-    void makingFragments(Fragment fragment) {
-        getFragmentManager().beginTransaction().
-                setTransition(R.anim.slide_in).
-                replace(R.id.recycler_view_container, fragment)
-                .setCustomAnimations(R.anim.slide_in, R.anim.slide_out, R.anim.slide_in, R.anim.slide_out)
-                .addToBackStack(null).commit();
 
-    }
 
     void changeElevation(int elev) {
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();

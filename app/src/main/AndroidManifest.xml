@@ -21,8 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.CategoryListsContainerActivity" />
-        <activity android:name=".activities.PageViewContainerActivity"></activity>
-        <activity android:name=".activities.FishListContainer"></activity>
+        <activity android:name=".activities.PageViewContainerActivity">
+
+        </activity>
+        <activity android:name=".activities.FishListContainer">
+
+        </activity>
     </application>
 
 </manifest>

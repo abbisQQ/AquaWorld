@@ -2,6 +2,7 @@ package com.abbisqq.myapplication.fragments;
 
 
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -269,8 +270,14 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
             // celcius to F
             if(temperaturTextView.getText().toString().endsWith(degreesC)) {
                 temperaturTextView.setText("Temperature: " + checkerMethod(String.valueOf(Math.round((Float.valueOf(mTemperature) * 9 / 5)*100.0)/100.0 + 32) + degreesF));
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    temperatureButton.setElevation(0);
+                }
             }else {
                 temperaturTextView.setText("Temperature: " +checkerMethod(mTemperature)+degreesC);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    temperatureButton.setElevation(20);
+                }
             }
         } else if ( v == aggressionButton ) {
             // Handle clicks for aggressionButton
@@ -286,6 +293,8 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
         return arg;
     }
 
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 }
