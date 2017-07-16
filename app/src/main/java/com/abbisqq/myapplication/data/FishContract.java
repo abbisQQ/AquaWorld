@@ -8,8 +8,10 @@ public class FishContract {
 
 
 
-    public static final String DATABASE_NAME = "fishBase.db";
-    public static final int DATABASE_VERSION = 1;
+    static final String DATABASE_NAME = "fishBase.db";
+    static final String CUSTOM_DATABASE_NAME = "custom_fishBase.db";
+
+    static final int DATABASE_VERSION = 1;
 
 
     public static final String SCINAME = "SciName";
@@ -24,13 +26,18 @@ public class FishContract {
     public static final String AGGRESSION = "aggression";
     public static final String BREEDING = "breeding";
     public static final String DIFFICULT = "difficult";
-
-
+    public static final String DATABASE_ID = "id";
 
 
     public static final String TABLE_NAME_CICHLIDS = "Cichlids";
     public static final String TABLE_NAME_TETRAS = "Tetras";
     public static final String TABLE_NAME_CATFISHES = "Catfish";
+    public static final String TABLE_NAME_GOURAMI = "Gourami";
+    public static final  String TABLE_NAME_BARDS = "Bards";
+
+
+    public static final String TABLE_NAME_CUSTOM = "custom";
+
 
 
 }

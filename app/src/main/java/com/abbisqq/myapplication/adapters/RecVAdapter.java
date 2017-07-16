@@ -17,26 +17,25 @@ import com.squareup.picasso.Picasso;
  * Created by chart on 17/6/2017.
  */
 
-public class RecVAdapter extends RecyclerView.Adapter<RecVAdapter.RecVHolder>{
+public class RecVAdapter extends RecyclerView.Adapter<RecVAdapter.RecVHolder> {
 
     private Cursor mCursor;
     private Context mContext;
 
 
-
     private ItemClickCallBack itemClickCallBack;
 
-    public  interface ItemClickCallBack {
-        void onItemClick(int p);
+    public interface ItemClickCallBack {
+        void onItemClick(View view, int p);
+
+        void onLongClick(View view, int position);
+
     }
 
 
     public void setItemClickCallBack(final ItemClickCallBack itemClickCallBack) {
         this.itemClickCallBack = itemClickCallBack;
     }
-
-
-
 
 
     public RecVAdapter(Cursor mCursor, Context mContext) {
@@ -47,7 +46,7 @@ public class RecVAdapter extends RecyclerView.Adapter<RecVAdapter.RecVHolder>{
     @Override
     public RecVHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.fish_list_row,parent,false);
+        View view = inflater.inflate(R.layout.fish_list_row, parent, false);
 
         return new RecVHolder(view);
     }
@@ -58,10 +57,10 @@ public class RecVAdapter extends RecyclerView.Adapter<RecVAdapter.RecVHolder>{
             return;
         }
 
-        if(mCursor.getString(mCursor.getColumnIndex(FishContract.COMMONNAME)).isEmpty()
-                ||mCursor.getString(mCursor.getColumnIndex(FishContract.COMMONNAME)).contains("N/A")){
+        if (mCursor.getString(mCursor.getColumnIndex(FishContract.COMMONNAME)).isEmpty()
+                || mCursor.getString(mCursor.getColumnIndex(FishContract.COMMONNAME)).contains("N/A")) {
             holder.tv.setText(mCursor.getString(mCursor.getColumnIndex(FishContract.SCINAME)));
-        }else {
+        } else {
             holder.tv.setText(mCursor.getString(mCursor.getColumnIndex(FishContract.COMMONNAME)));
         }
         Picasso.with(mContext)
@@ -79,30 +78,41 @@ public class RecVAdapter extends RecyclerView.Adapter<RecVAdapter.RecVHolder>{
         return mCursor.getCount();
     }
 
-    class RecVHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class RecVHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
         ImageView iv;
         TextView tv;
         View container;
 
 
-        public RecVHolder(View itemView) {
+        RecVHolder(View itemView) {
             super(itemView);
-            iv = (ImageView)itemView.findViewById(R.id.list_image_view);
-            tv = (TextView)itemView.findViewById(R.id.list_name_text_view);
+            iv = (ImageView) itemView.findViewById(R.id.list_image_view);
+            tv = (TextView) itemView.findViewById(R.id.list_name_text_view);
             container = itemView.findViewById(R.id.fish_list_container);
             container.setOnClickListener(this);
+            container.setOnLongClickListener(this);
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
             if (view.getId() == R.id.fish_list_container) {
                 //gets the position of the item hat was clicked
-                itemClickCallBack.onItemClick(getAdapterPosition());
+                itemClickCallBack.onItemClick(view,getAdapterPosition());
+
             }
         }
-    }
 
 
-
-}
+        @Override
+        public boolean onLongClick(View view) {
+            if (view.getId() == R.id.fish_list_container) {
+                //gets the position of the item hat was clicked
+                itemClickCallBack.onLongClick(view, getAdapterPosition());
+                return true;
+            }
+            return false;
+        }
+    }}

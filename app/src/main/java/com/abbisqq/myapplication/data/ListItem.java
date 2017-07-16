@@ -13,7 +13,7 @@ public class ListItem {
         return imageRes;
     }
 
-    public void setImageRes(int imageRes) {
+    void setImageRes(int imageRes) {
         this.imageRes = imageRes;
     }
 
@@ -21,7 +21,7 @@ public class ListItem {
         return title;
     }
 
-    public void setTitle(String title) {
+    void setTitle(String title) {
         this.title = title;
     }
 }

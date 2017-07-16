@@ -31,7 +31,7 @@
                 android:textSize="@dimen/text_small"
                 android:id="@+id/list_name_text_view"
                 tools:text="Hello"
-                android:textColor="@color/text_color"
+                android:textColor="@color/colorPrimaryDark"
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center"/>
         </LinearLayout>

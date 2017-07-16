@@ -7,15 +7,19 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.abbisqq.myapplication.R;
 import com.abbisqq.myapplication.adapters.ViewPagerAdapter;
+import com.abbisqq.myapplication.data.CustomDatabaseHelper;
+import com.abbisqq.myapplication.data.FishContract;
 import com.abbisqq.myapplication.data.FishDatabaseHelper;
 
 public class PageViewContainerActivity extends FragmentActivity {
 
     Cursor mCursor;
     FishDatabaseHelper helper;
+    CustomDatabaseHelper customHelper;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -41,12 +45,18 @@ public class PageViewContainerActivity extends FragmentActivity {
         String mTableName = getIntent().getStringExtra("table_name");
         int mPosition = getIntent().getIntExtra("position",0);
 
+        if(mTableName.equals(FishContract.TABLE_NAME_CUSTOM)){
+           customHelper =  new CustomDatabaseHelper(this);
+            mCursor = customHelper.getAllData();
+        }else {
+            // Instantiate a ViewPager and a PagerAdapter.
+            helper = new FishDatabaseHelper(this, mTableName);
+            mCursor = helper.getFishes();
 
-        // Instantiate a ViewPager and a PagerAdapter.
-        helper = new FishDatabaseHelper(this, mTableName);
-        mCursor = helper.getFishes();
+        }
+
         mPager = (ViewPager) findViewById(R.id.my_view_pager);
-        mPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),mCursor);
+        mPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), mCursor);
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(mPosition);
 
@@ -56,9 +66,23 @@ public class PageViewContainerActivity extends FragmentActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mCursor.close();
-        helper.close();
+        if(mCursor!=null)
+            mCursor.close();
+        if(helper!=null)
+            helper.close();
+        if(customHelper!=null)
+            customHelper.close();
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.back_button_out_animation,R.anim.back_button_in_animation);
+    }
+
+
+    public void goBackToFishList(View view) {
+        onBackPressed();
+    }
 }

@@ -14,7 +14,7 @@ import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 public class FishDatabaseHelper  extends SQLiteAssetHelper {
 
 
-    String tableName;
+    private String tableName;
 
     public FishDatabaseHelper(Context context, String name) {
         super(context, FishContract.DATABASE_NAME, null, FishContract.DATABASE_VERSION);
@@ -55,7 +55,5 @@ public class FishDatabaseHelper  extends SQLiteAssetHelper {
         return c;
 
     }
-
-
 
 }

@@ -1,6 +1,7 @@
 package com.abbisqq.myapplication.activities;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,29 +28,41 @@ public class StartingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.starting_activity);
 
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.splash);
+
+
         //Calling  method i made to rotate the image
         clockwise();
 
+        if(savedInstanceState==null) {
 
-        new Handler().postDelayed(new Runnable() {
+            mp.start();
+
+
+
+
+            new Handler().postDelayed(new Runnable() {
 
             /*
              * Showing splash screen with a timer. This will be useful when you
              * want to show case your app logo / company
              */
 
-            @Override
-            public void run() {
-                // This method will be executed once the timer is over
-                // Start your app main activity
-                // close this activity
-                Intent intent = new Intent(StartingActivity.this,CategoryListsContainerActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, SPLASH_TIME_OUT);
+                @Override
+                public void run() {
+                    // This method will be executed once the timer is over
+                    // Start your app main activity
+                    // close this activity
 
+                    mp.stop();
+                    mp.release();
+                    Intent intent = new Intent(StartingActivity.this, CategoryListsContainerActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }, SPLASH_TIME_OUT);
 
+        }
 
     }
 

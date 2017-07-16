@@ -1,20 +1,28 @@
 package com.abbisqq.myapplication.fragments;
 
 
+import android.app.Dialog;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.abbisqq.myapplication.R;
 import com.abbisqq.myapplication.data.FishContract;
 import com.squareup.picasso.Picasso;
+
+import java.util.zip.Inflater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,8 +42,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
     private static final String ARG_BREEDING = "breeding";
     private static final String ARG_OVERVIEW = "overview";
     private static final String ARG_WATER = "water";
-    private static int cursorPosition;
-    private static Cursor cursorStatic;
+
 
     private String degreesF;
     private String degreesC;
@@ -51,13 +58,11 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
     private String mBreed;
     private String mOver;
     private String mWater;
+    Toast myToast;
 
 
 
     private ImageButton measureButton,phButton;
-    private ImageView fishImage;
-    private TextView sciNameTV,commonNameTV,overviewTV,difficultTV;
-
 
 
     private ImageButton dietButton;
@@ -65,14 +70,11 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
     private ImageButton breedingButton;
     private ImageButton temperatureButton;
     private ImageButton aggressionButton;
-    private TextView phTextView;
-    private TextView dietTextView;
-    private TextView waterTextView;
-    private TextView breedingTextView;
     private TextView temperaturTextView;
-    private TextView temperTextView;
     private TextView sizeTextView;
-
+    private Toolbar bar;
+    LayoutInflater alert_inflater;
+    Dialog dialog;
 
 
 
@@ -88,8 +90,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
     public static FishDetailsFragment newInstance(Cursor cursor, int p) {
         FishDetailsFragment fragment = new FishDetailsFragment();
-        cursorPosition = p;
-        cursorStatic = cursor;
+
 
 
         cursor.moveToPosition(p);
@@ -154,13 +155,24 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fish_details, container, false);
 
+
+
+
+
+        alert_inflater =  getActivity().getLayoutInflater();
+
         sizeTextView = (TextView)view.findViewById(R.id.size_textView);
+        ScrollView scrollView = (ScrollView) view.findViewById(R.id.detail_scrollview);
+
+
+        bar = (Toolbar)view.findViewById(R.id.fish_detail_toolbar);
+        bar.setTitle(R.string.app_name);
 
         // code for celcius and Far
         degreesF = " \u2109";
         degreesC = " \u2103";
 
-        fishImage = (ImageView)view.findViewById(R.id.fish_main_image);
+        ImageView fishImage = (ImageView) view.findViewById(R.id.fish_main_image);
 
         measureButton = (ImageButton)view.findViewById(R.id.measure_button);
         measureButton.setOnClickListener(this);
@@ -169,31 +181,31 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
         Picasso.with(getContext()).load(mImage).fit().placeholder(R.drawable.loading_animation).into(fishImage);
 
-        sciNameTV = (TextView)view.findViewById(R.id.sciName_tv);
-        sciNameTV.setText(getString(R.string.scientific_name)+mSci);
+        TextView sciNameTV = (TextView) view.findViewById(R.id.sciName_tv);
+        sciNameTV.setText(String.format("%s%s", getString(R.string.scientific_name), mSci));
 
-        commonNameTV = (TextView)view.findViewById(R.id.common_name_tv);
+        TextView commonNameTV = (TextView) view.findViewById(R.id.common_name_tv);
 
         if(mCom==null||mCom.isEmpty()||mCom.equals("N/A"))
             mCom = "    N/A    ";
-        commonNameTV.setText(getString(R.string.common_name) + mCom);
+        commonNameTV.setText(String.format("%s%s", getString(R.string.common_name), mCom));
 
 
         phButton = (ImageButton)view.findViewById(R.id.ph_button);
         phButton.setOnClickListener(this);
-        phTextView = (TextView)view.findViewById(R.id.ph_textView);
+        TextView phTextView = (TextView) view.findViewById(R.id.ph_textView);
 
         dietButton = (ImageButton)view.findViewById(R.id.diet_button);
         dietButton.setOnClickListener(this);
-        dietTextView = (TextView)view.findViewById(R.id.feeding_textView);
+        TextView dietTextView = (TextView) view.findViewById(R.id.feeding_textView);
 
         waterButton = (ImageButton)view.findViewById(R.id.water_button);
         waterButton.setOnClickListener(this);
-        waterTextView = (TextView)view.findViewById(R.id.water_textView);
+        TextView waterTextView = (TextView) view.findViewById(R.id.water_textView);
 
         breedingButton = (ImageButton)view.findViewById(R.id.breeding_button);
         breedingButton.setOnClickListener(this);
-        breedingTextView = (TextView)view.findViewById(R.id.breeding_textView);
+        TextView breedingTextView = (TextView) view.findViewById(R.id.breeding_textView);
 
         temperatureButton = (ImageButton)view.findViewById(R.id.temperature_button);
         temperatureButton.setOnClickListener(this);
@@ -201,42 +213,67 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
         aggressionButton= (ImageButton)view.findViewById(R.id.aggression_button);
         aggressionButton.setOnClickListener(this);
-        temperTextView = (TextView)view.findViewById(R.id.temper_textView);
+        TextView temperTextView = (TextView) view.findViewById(R.id.temper_textView);
 
-        phTextView.setText("The water PH must be: " + checkerMethod(mPh));
-        temperTextView.setText("Behavior: " + checkerMethod(mAggr));
-        dietTextView.setText("This is fish is: "+checkerMethod(mDiet));
-        waterTextView.setText("Water must be: "+ checkerMethod(mWater));
-        breedingTextView.setText("Breeding type: " + checkerMethod(mBreed));
+        phTextView.setText(String.format("%s%s", getString(R.string.the_water_ph), checkerMethod(mPh)));
+        temperTextView.setText(String.format("%s%s", getString(R.string.behavior), checkerMethod(mAggr)));
+        dietTextView.setText(String.format("%s%s", getString(R.string.fish_diet), checkerMethod(mDiet)));
+        waterTextView.setText(String.format("%s%s", getString(R.string.water_softness), checkerMethod(mWater)));
+        breedingTextView.setText(String.format("%s%s", getString(R.string.breeding_text), checkerMethod(mBreed)));
         temperaturTextView.setText("Temperature: " +checkerMethod(mTemperature)+degreesC);
         sizeTextView.setText("<------"+mSize+" cm"+"------>");
 
 
-        overviewTV = (TextView)view.findViewById(R.id.overview_tv);
+
+        TextView overviewTV = (TextView) view.findViewById(R.id.overview_tv);
         overviewTV.setText(mOver);
-        difficultTV = (TextView)view.findViewById(R.id.difficult_tv);
+        TextView difficultTV = (TextView) view.findViewById(R.id.difficult_tv);
         switch (mDifficult){
             case "1":
-                difficultTV.setText("Current fish difficulty: Very Easy");
+                difficultTV.setText(R.string.very_easy);
                 break;
             case "2":
-                difficultTV.setText("Current fish difficulty: Easy");
+                difficultTV.setText(R.string.easy);
                 break;
             case "3":
-                difficultTV.setText("Current fish difficulty: Normal");
+                difficultTV.setText(R.string.normal);
                 break;
             case "4":
-                difficultTV.setText("Current fish difficulty: Hard");
+                difficultTV.setText(R.string.hard);
                 break;
             case "5":
-                difficultTV.setText("Current fish difficulty: Very Hard");
+                difficultTV.setText(R.string.very_hard);
                 break;
             default:
-                difficultTV.setText("Current fish difficulty: Unknown");
+                difficultTV.setText(R.string.unknown);
+        }
+
+        ImageView backImage = (ImageView) view.findViewById(R.id.go_back_to_fish_list);
+
+        if(getResources().getConfiguration().orientation==2){
+            bar.setTitleTextAppearance(getContext(),R.style.Toolbar_TitleText_Big);
+            backImage.setImageResource(R.drawable.big_back);
+        }else {
+            bar.setTitleTextAppearance(getContext(),R.style.Toolbar_TitleText_Small);
+            backImage.setImageResource(R.drawable.back);
         }
 
 
 
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_UP || event.getAction() == MotionEvent.ACTION_DOWN) {
+                    changeElevation(0);
+                    return false;
+                } else {
+                    changeElevation(15);
+                    return false;
+
+                }
+
+            }
+        });
 
 
 
@@ -245,6 +282,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
+
         if ( v == measureButton ) {
             // Handle clicks for measureButton
             // cm to inch
@@ -256,33 +294,35 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
         } else if ( v == phButton ) {
             // Handle clicks for phButton
 
+            iconPressDialog(dialog,getString(R.string.ph_toast));
+
         } else if ( v == dietButton ) {
             // Handle clicks for dietButton
+
+            iconPressDialog(dialog,getString(R.string.diet_toast));
 
         } else if ( v == waterButton ) {
             // Handle clicks for waterButton
 
+            iconPressDialog(dialog,getString(R.string.water_toast));
+
         } else if ( v == breedingButton ) {
             // Handle clicks for breedingButton
+
+            iconPressDialog(dialog,getString(R.string.breeding_toast));
 
         } else if ( v == temperatureButton ) {
             // Handle clicks for temperatureButton
             // celcius to F
             if(temperaturTextView.getText().toString().endsWith(degreesC)) {
                 temperaturTextView.setText("Temperature: " + checkerMethod(String.valueOf(Math.round((Float.valueOf(mTemperature) * 9 / 5)*100.0)/100.0 + 32) + degreesF));
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    temperatureButton.setElevation(0);
-                }
+
             }else {
                 temperaturTextView.setText("Temperature: " +checkerMethod(mTemperature)+degreesC);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    temperatureButton.setElevation(20);
-                }
             }
         } else if ( v == aggressionButton ) {
             // Handle clicks for aggressionButton
-
-
+           iconPressDialog(dialog,getString(R.string.temper_toast));
         }
     }
     //safety when the strings are null or empty
@@ -292,6 +332,31 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
         return arg;
     }
+
+    void changeElevation(int elev) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            bar.setElevation(elev);
+
+        }
+    }
+
+
+    public void iconPressDialog(Dialog dialog, String text){
+        if(dialog==null) {
+            // 1. Instantiate an AlertDialog.Builder with its constructor
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setView(alert_inflater.inflate(R.layout.icon_info,null));
+            // 2. Chain together various setter methods to set the dialog characteristics
+            // Create the AlertDialog
+            dialog = builder.create();
+            dialog.setTitle(String.valueOf(text));
+            dialog.setCanceledOnTouchOutside(true);
+
+        }
+        dialog.show();
+    }
+
 
     @Override
     public void onDestroy() {

@@ -13,7 +13,7 @@ import com.abbisqq.myapplication.fragments.FishDetailsFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    Cursor mCursor;
+    private Cursor mCursor;
 
     public ViewPagerAdapter(FragmentManager fm,Cursor cursor) {
         super(fm);

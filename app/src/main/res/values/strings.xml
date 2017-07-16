@@ -3,6 +3,42 @@
     <string name="title_activity_recycler_views_container">RecyclerViewsContainerActivity</string>
 
 
-    <string name="scientific_name">Sci/Name:</string>
-    <string name="common_name">Com/Name:</string>
+    <string name="scientific_name">Sci/Name: </string>
+    <string name="common_name">Com/Name: </string>
+    <string name="categories">Fish Categories</string>
+    <string name="dialog_message">Are you sure you want to exit Aqua World?</string>
+    <string name="dialog_title">EXIT</string>
+    <string name="ok">Yes</string>
+    <string name="cancel"> Cancel</string>
+    <string name="exit_text">Exit Aqua World?</string>
+    <string name="add_to_favorites">Add to Favorites?</string>
+    <string name="title_favorites">Favorite Fishes</string>
+    <string name="very_easy">Current fish difficulty: Very Easy</string>
+    <string name="easy">Current fish difficulty: Easy</string>
+    <string name="normal">Current fish difficulty: Normal</string>
+    <string name="hard">Current fish difficulty: Hard</string>
+    <string name="very_hard">Current fish difficulty: Very Hard</string>
+    <string name="unknown">Current fish difficulty: Unknown</string>
+    <string name="the_water_ph">The water PH must be: </string>
+    <string name="behavior">Behavior: </string>
+    <string name="fish_diet">Fish diet: </string>
+    <string name="water_softness">Water must be: </string>
+    <string name="breeding_text">Breeding type: </string>
+    <string name="delete_fish_text">Delete That Fish?</string>
+    <string name="enter_image_url">Enter Image Url</string>
+    <string name="water_ph">Water PH</string>
+    <string name="fish_diet_ev">Fish Diet(ex Carnivore)</string>
+    <string name="water_hardness">Water Hardness(ex Soft)</string>
+    <string name="breeding_type">Breeding type</string>
+    <string name="temperature">Temperature</string>
+    <string name="aggression">Aggression</string>
+    <string name="details_about_the_fish">Details About The Fish. </string>
+    <string name="how_difficult_to_raise">How Difficult to Raise. </string>
+    <string name="fish_max_or_current_size">Fish Max or Current Size. </string>
+    <string name="save">SAVE</string>
+    <string name="ph_toast">Lower to Highest Water ph that is ideal for the specific fish. </string>
+    <string name="diet_toast">What your Fish Eats In General.</string>
+    <string name="water_toast">Average Water Hardness. </string>
+    <string name="breeding_toast">Type of Breeding or Difficulty in Home aquariums.</string>
+    <string name="temper_toast">Fish Overall Behavior.</string>
 </resources>
