@@ -4,6 +4,9 @@ package com.abbisqq.myapplication.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,12 +19,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.abbisqq.myapplication.R;
 import com.abbisqq.myapplication.activities.PageViewContainerActivity;
 import com.abbisqq.myapplication.adapters.RecVAdapter;
 import com.abbisqq.myapplication.data.CustomDatabaseHelper;
 import com.abbisqq.myapplication.data.FishContract;
 import com.abbisqq.myapplication.data.FishDatabaseHelper;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 
 /**
@@ -44,9 +52,11 @@ public class FishListFragment extends Fragment implements RecVAdapter.ItemClickC
     AlertDialog dialog;
     int longClickPosition;
     private ImageView backImage;
-
+    MediaPlayer mp;
     private String mTableName;
     CustomDatabaseHelper databaseHelper;
+    AdView secondAD;
+    TextView insteadOfADD2;
 
     public FishListFragment() {
         // Required empty public constructor
@@ -83,9 +93,29 @@ public class FishListFragment extends Fragment implements RecVAdapter.ItemClickC
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fish_list_fragment, container, false);
 
+        mp = MediaPlayer.create(getContext(), R.raw.splashlow);
+
         bar = (Toolbar) view.findViewById(R.id.fish_list_toolbar);
         bar.setTitle(mTableName);
         backImage = (ImageView)view.findViewById(R.id.go_back_to_categories);
+
+
+        secondAD = (AdView)view.findViewById(R.id.second_banner);
+
+        MobileAds.initialize(getContext(),"ca-app-pub-6680942670958253~1248857286");
+
+        insteadOfADD2 = (TextView)view.findViewById(R.id.instead_of_add2);
+
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+        secondAD.loadAd(adRequest);
+
+        if(!isNetworkAvailable()){
+            secondAD.setVisibility(View.GONE);
+            insteadOfADD2.setVisibility(View.VISIBLE);
+        }
+
+
 
 
         if (getResources().getConfiguration().orientation == 2) {
@@ -128,8 +158,24 @@ public class FishListFragment extends Fragment implements RecVAdapter.ItemClickC
     }
 
 
+
+
+    public boolean isNetworkAvailable()
+    {
+        ConnectivityManager connectivityManager = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo !=null &&activeNetworkInfo.isConnected();
+    }
+
+
+
+
+
+
+
     @Override
     public void onItemClick(View view,int p) {
+        mp.start();
         Intent intent = new Intent(getActivity(), PageViewContainerActivity.class);
         intent.putExtra("table_name", mTableName);
         intent.putExtra("position", p);
@@ -138,8 +184,16 @@ public class FishListFragment extends Fragment implements RecVAdapter.ItemClickC
 
     }
 
+
+
+
+
+
+
+
     @Override
     public void onLongClick(View view, int position) {
+        mp.start();
         longClickPosition = position;
         view.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         setView(view);
@@ -207,6 +261,10 @@ public class FishListFragment extends Fragment implements RecVAdapter.ItemClickC
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if(mp!=null){
+            mp.stop();
+            mp.release();
+        }
         cursor.close();
         helper.close();
     }

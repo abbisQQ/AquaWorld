@@ -14,6 +14,9 @@ public class FishContract {
     static final int DATABASE_VERSION = 1;
 
 
+    public static final String APP_ID  = "ca-app-pub-6680942670958253~1248857286";
+
+
     public static final String SCINAME = "SciName";
     public static final String COMMONNAME = "commonName";
     public static final String SIZE = "size";
@@ -33,7 +36,15 @@ public class FishContract {
     public static final String TABLE_NAME_TETRAS = "Tetras";
     public static final String TABLE_NAME_CATFISHES = "Catfish";
     public static final String TABLE_NAME_GOURAMI = "Gourami";
-    public static final  String TABLE_NAME_BARDS = "Bards";
+    public static final  String TABLE_NAME_BARBS = "Barbs";
+    public static final  String TABLE_NAME_LOACHES = "Loaches";
+    public static final  String TABLE_NAME_DISCUS = "Discus";
+    public static final  String TABLE_NAME_ANGELFIH = "AngelFish";
+    public static final  String TABLE_NAME_GOLDFISH= "Goldfish";
+    public static final  String TABLE_NAME_MOLLIES= "Mollies";
+    public static final  String TABLE_NAME_SWORDTAILS= "Swordtails";
+
+
 
 
     public static final String TABLE_NAME_CUSTOM = "custom";

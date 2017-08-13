@@ -12,12 +12,14 @@ import java.util.List;
 public class FishFamiliesData {
 
     private static final String[] titles = {"Favorite/User made","Cichlid", "Tetras",
-            "Catfish", "Gourami","Bards"};
+            "Catfish", "Gourami","Barbs","Loaches","Discus","Angelfish", "Fancy Goldfish","Mollies","Swordtails"};
 
     private static final int[] icons = {R.drawable.favorite,R.drawable.cichlid, R.drawable.tetras,
             R.drawable.corydoras,
             R.drawable.gourami,
-            R.drawable.bard};
+            R.drawable.bard,
+    R.drawable.loach,R.drawable.discus,R.drawable.angelfish,R.drawable.goldfish
+    ,R.drawable.mollies,R.drawable.swordtail};
 
 
     public static List<ListItem> getListData() {

@@ -4,19 +4,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/favorite_container_layout"
     tools:context="com.abbisqq.myapplication.fragments.CategoryFragment">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/main_toolbar"
+        android:id="@+id/favorite_toolbar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary"
-        app:title="@string/categories"
         app:titleTextColor="@color/white_background">
 
 
         <ImageButton
-            android:id="@+id/go_back"
+            android:id="@+id/go_back_from_favorites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -25,37 +25,38 @@
             android:layout_marginEnd="10dp"
             android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
-            android:onClick="goBack"
+            android:onClick="goBackToFromFavorites"
             android:src="@drawable/back" />
+
+
 
     </android.support.v7.widget.Toolbar>
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/category_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/favorite_recycler_view"
         android:layout_weight="10">
 
     </android.support.v7.widget.RecyclerView>
 
 
-
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
 
-        android:id="@+id/first_banner"
+        android:id="@+id/third_banner"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         ads:adSize="SMART_BANNER"
-        ads:adUnitId="ca-app-pub-6680942670958253/8416900863">
+        ads:adUnitId="ca-app-pub-6680942670958253/9790735866">
     </com.google.android.gms.ads.AdView>
 
 
     <TextView
-        android:id="@+id/instead_of_add"
+        android:id="@+id/instead_of_add3"
         android:text="@string/no_internet"
         android:textSize="@dimen/text_size"
         android:textColor="@color/white_background"
@@ -64,5 +65,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:visibility="gone"/>
+
+
+
 
 </LinearLayout>

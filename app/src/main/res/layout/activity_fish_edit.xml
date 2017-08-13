@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.abbisqq.myapplication.activities.FishEditActivity"
+    android:background="@color/main_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/edit_image_view"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:background="@drawable/border_image"
+                app:srcCompat="@drawable/cichlid" />
+
+            <EditText
+                android:id="@+id/image_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/enter_image_url"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/sciName_et"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/scientific_name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/common_name_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/common_name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/ph_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/water_ph"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/diet_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/fish_diet_ev"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/water_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/water_hardness"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/breeding_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/breeding_type"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/size_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/fish_max_or_current_size"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/temperature_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/temperature"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/temper_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/aggression"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/overview_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/details_about_the_fish"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+            <EditText
+                android:id="@+id/difficult_ev"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:hint="@string/how_difficult_to_raise"
+                android:imeOptions="actionGo"
+                android:inputType="number"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="@dimen/text_small" />
+
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@color/colorPrimary"
+                android:drawableEnd="@mipmap/savebutton"
+                android:paddingStart="50dp"
+                android:onClick="saveEverythin"
+                android:text="@string/save"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_size" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</FrameLayout>

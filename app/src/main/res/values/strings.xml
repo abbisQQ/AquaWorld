@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Aqua World!</string>
+    <string name="app_name">Aqua World!</string>
     <string name="title_activity_recycler_views_container">RecyclerViewsContainerActivity</string>
 
 
@@ -33,12 +33,87 @@
     <string name="temperature">Temperature</string>
     <string name="aggression">Aggression</string>
     <string name="details_about_the_fish">Details About The Fish. </string>
-    <string name="how_difficult_to_raise">How Difficult to Raise. </string>
+    <string name="how_difficult_to_raise">Fish Difficult. 1 very easy - 5 very hard </string>
     <string name="fish_max_or_current_size">Fish Max or Current Size. </string>
     <string name="save">SAVE</string>
-    <string name="ph_toast">Lower to Highest Water ph that is ideal for the specific fish. </string>
+    <string name="ph_toast">Lowest to Highest Water ph that is ideal for the specific fish. </string>
     <string name="diet_toast">What your Fish Eats In General.</string>
     <string name="water_toast">Average Water Hardness. </string>
     <string name="breeding_toast">Type of Breeding or Difficulty in Home aquariums.</string>
     <string name="temper_toast">Fish Overall Behavior.</string>
+
+
+
+
+
+    <string name="cichilds_info">Cichlids are attractive, active, are generally quite durable fish. The Cichlid family offers the widest variety of body shapes, a vast range of sizes, and some very beautiful coloration and patterning. These characteristics are further complimented by their remarkable behavior, highly complex yet ritualistic. They are very active, intriguing, and many cichlids can be very personable, readily greeting their keepers and begging for food. All these traits make cichlids a favorite aquarium fish.
+
+Our list of cichlid types covers a wide array of species from all around the world. The cichlid family is so vast that there are many types of cichlids that make good aquarium inhabitants. Some South American Cichlid species are of a more amiable nature, such as the severum, angelfish, and dwarf cichlids. These can be kept in a group environment. But many others are quite aggressive and are best kept singly. The African cichlids from the Rift Lakes are highly prized for their color. Others for unique characteristics as seen in the popular Tropheus genus, featherfins, goby cichlids, and shelldwellers to name a few.
+
+Some cichld species, both African Cichlids and South American Cichlids, reach an impressive size and are great specimens for a large show tank. However some are not really suitable for the home aquarium due to size. But most seen in the hobby have a mix of fascinating of characteristics and are a delight to keep.</string>
+
+
+
+<string name="tetras_info">Tetra’s are among the most common and popular tropical fish. This is due to their small size, calm temperament, low cost, hardiness and strong colorations.
+
+Tetras are very easy to care for and can be housed with almost any other non-agressive species. The small size and nature of Tetra fish often means they will school together in the aquarium. This is a desirable trait in freshwater species and can add a brilliant effect to any large aquarium.
+
+There are countless species of tetra. The most common aquarium additions include Neon Tetra, Cardinal Tetra, Penguin Tetra, Harlequin Tetra, Rummynose Tetra, Glowlight Tetra, Ember Tetra and Glowlight Tetra. These species have excellent colorations, lively personalities and are less sensitive to water conditions than other fish. They have a maximum size of 2" and can live up to 10 years in captivity if properly cared for.</string>
+
+
+
+
+<string name="catfish_info">Catfish, common name applied to members of the fish families constituting the order Siluriformes, found in fresh and coastal waters. Catfish are named for the barbels ( "whiskers" ) around their mouths and have scaleless skins, fleshy, rayless posterior fins, and sharp defensive spines in the shoulder and dorsal fins. They are able to use the swim bladder to produce sounds, and have a complex set of bones forming a sensitive hearing apparatus. Some species, such as the stone and tadpole catfishes and the madtom, can inflict stings by means of poison glands in the pectoral spines. Catfish are usually dull-colored, though the madtoms of E North American streams are brightly patterned. Members of most madtom species are no more than 5 in. (12.7 cm) long; some are less than 2 in. (5 cm) long. Danube catfish called wels, or sheatfish, reach a length of 13 ft (4 m) and a weight of 400 lb (180 kg), and the Mekong giant catfish can reach 10 ft (3 m) and 550 lb (250 kg). Catfish are omnivorous feeders and are valuable scavengers. </string>
+
+
+
+<string name="gourami_info">The Gourami and Betta fish species presented here have the ability to breathe air from the surface of the tank when oxygen levels are low or depleted in the aquarium water. This ability comes from a specialized organ called the labryinth organ. If you are keeping one of these species, try to keep a bit of open space above the tank water for them to use this organ if necessary.
+
+These fish also have the reputation of not getting along with members of the same species, especially bettas. Do not house multiple male bettas in the same tank. Use caution when the other species when keeping multiple males in the same tank. You may also see some aggression dealt out by these fish to their tank mates (other species) in cramped quarters. The Kissing Gourami can be especially annoying at times regarding its behavior toward tank mates.</string>
+
+<string name="barbs_info">
+Barbs are lively, hardy and colorful fish. They are all schooling species that do best if kept in groups of at least five or more, so keep that in mind when considering this family of fish. Most prefer soft acidic to neutral water that is well aerated and a bit on the cooler side. Because they are so active, tank mates should only be species that can tolerate boisterous companions. Long-finned fish, in particular, are usually not the best tank mates for members of the Barb family. These Barb species overviews will help you choose one that is right for you. More detailed profiles are available via the links provided for each species.</string>
+
+
+<string name="loaches_info">Loaches have a heightened sense of taste and smell as well as some very flexible body shapes. They will search out stray food wherever it falls. They are nocturnal, but they are great scavengers, especially appreciated by the aquarist. Loaches almost always adapt to aquarium foods and are long lived, with many species can live 10 years or more. They can win your affection and respect, as they do a great job keeping the bottom of the aquarium clean.
+
+Although popularly known as Loaches or true Loaches, these fish have also been commonly referred to as "Thorn-eyes". This is because they have one or two thorn-like spines directly between the eyes or just beneath the eyes. These spines are often erect and can act as a defense, be careful when catching these fish. These spines often gets caught in the net
+
+The true Loaches belong to the family Cobitidae. There are quite a few species available to aquarists, yet this is a rather small family. It consisting of about 100 species, but it does contain some of the most spectacular freshwater fishes. They are found in rivers throughout Asia, Europe, and parts of Africa. They occur throughout much of the Old World, widely across southern and southeast Asia. Only 3 are native to Germany and just a few species are found in northern Africa, mostly in Morroco and Ethopia.</string>
+
+
+
+<string name="discus_info">The Discus fish is known as the King of the Aquarium. Perhaps the most beautiful of all tropical fish, the Discus fish is also one of the more difficult tropical fish to keep and is not recommended for beginners. Discus require excellent water conditions, frequent water changes and higher water temperatures than most other tropical fish. Most successful keepers house their Discus in a species only tank because of the high water temperature requirement.
+
+There are many color varieties of Discus to choose from with many more being introduced all the time. If you are interested in this fish, be prepared to spend some jack on this one of a kind tropical fish. If you are on the market to buy Discus, there are many online websites that specifically sell Discus. Shop around and get recommendations from others for good places to buy them.
+
+Many fish keepers will only get the best available foods for this fish. Vitamin enriched flakes and live, frozen and freeze dried foods can be given.</string>
+
+
+  <string name="angelfish">The freshwater Angelfish is a very popular tropical fish because of its unique shape and because of their interesting personalities. Freshwater angelfish are aggressive eaters and will go to the top of the tank when they see you approach. Because of their aggressive feeding habits, make sure that your less aggressive fish are getting their share around feeding time.
+
+Angel fish are curious about their environment and can become very territorial, especially around breeding time. They will pair off and if any other fish tries to enter their territory they will go after them. So use caution when stocking.
+
+Freshwater Angelfish are not picky eaters. They will go after many types of fish food, including vitamin enriched flakes, frozen, freeze dried and live foods.
+
+They prefer tall tanks over short tanks because of their tall body shape.</string>
+
+
+
+<string name="goldfish">The Goldfish is a favorite fish for many. How many of us did nοt keep them at one time or another? Goldfish are usually very hardy fish and they can live in temperatures ranging from 40°F - 90°F (4°C - 32°C). It is important to note that this fish has an extremely long lifespan if cared for properly, so getting one can become a long term commitment. Many varieties of this fish are available with many different markings, fancy varieties and colors including gold, orange, white and black.
+
+They can sometimes come down with swim bladder disease and occasionally freshwater ich. It is very important to provide your fish with frequent water changes and quality, nutritious fish food. To increase your chance of success with keeping them, try not to keep them in a tiny bowl. A tiny bowl will become polluted quickly and you will have to perform maintenance all of the time. Instead get your goldfish at least a 20 gallon tank with a good power filter or canister filter. Also, if you want to keep multiples, try for a minimum of 10 gallons per goldfish after the initial 20 gallons for better long term success with this fish.</string>
+
+
+
+    <string name="molies_info">Mollies are one of those most popular fish in the aquarium hobby, and most people have had at one time, at least one of these gentle and attractive live bearers in their fish tank. Most people mistakenly believe that there is only one species of molly available in fish stores, but there are actually three separate species available in the aquarium trade. However, at this point, most of the mollies available are so hopelessly hybridized, that it would be impossible to determine which species they originated from.
+
+If you ever come across wild mollies in a fish store, they will usually come from one of two species. The first species is sailfin mollies (Poecilia latipinna) which are found in the coastal waters of the southeast United States and around the Gulf of Mexico. These are among the most common type of molly, and are incredibly prolific breeders in the wild. Because they live in coastal regions, they have a high tolerance for brackish water, and have even been found living in the ocean.
+
+The other species that is commonly found in the aquarium trade is the short-finned molly (Poecilia sphenops). These fish are found in Mexico, Central America and in the northern parts of South America. The short-finned molly adapt most readily to the home aquarium, and is one of the easiest beginner fish available . Like their sailfin molly relatives, they can also tolerate high salinity in water, and do well in both brackish and freshwater tanks.
+
+There is a third species of mollies that is occasionally found in the aquarium hobby, but it is far rarer than either the short-finned molly or the sailfin molly. It is the Mexican sailfin molly (P. velifera), and is very difficult to breed and keep in aquariums, though it does well in outdoor ponds. It is found in the wild in the coastal regions of Yucatan in Mexcio, and like the other two species, tolerates a very high level of salinity in the water.</string>
+    <string name="no_internet">No Internet Connection.</string>
+    <string name="swordtails_info">The Swordtail Xiphophorus hellerii is extremely popular. It is one of the prettiest aquariam fish and very hardy. In the wild, it has an olive green body with red and yellow along the sides and sometimes colorful speckles on its fins. With this coloration, it is most commonly called the Green Swordtail or the Red Swordtail. However, in captivity, it has been bred into the fabulous colors that make it so highly prized today.  The Green Swordtail is similar in shape to both the Platy fish and the Guppy. It has a bulkier body than either of those two, though, and also has a \"sword\" extending from the bottom of the male\'s tail fin. It is often thought to be named for the \"sword\" shaped extension of its tail fin, but the Swordtail was actually named for the sword-like appearance of the male\'s anal fin. This specialized anal fin develops as the male fish matures. The middle rays of the anal fin are modified into a narrow copulatory organ called a gonopodium.  Indeed, the beautiful male\'s \"sword\" tail is one of the most striking physical characteristics possible in any aquarium fish. Even though this dramatic tail fin has no apparent purpose, it accounts for anywhere from 1/4 to 1/3 of the total length of the fish! The wild species have an even more majestic tail, with swords up to 6 inches (15 cm) in length. The sword is shorter in tank-bred specimens but complemented by the wonderful colors.</string>
+
 </resources>

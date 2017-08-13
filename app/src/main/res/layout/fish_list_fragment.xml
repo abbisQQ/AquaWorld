@@ -35,8 +35,35 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fish_recycler_view">
+        android:id="@+id/fish_recycler_view"
+        android:layout_weight="10">
 
     </android.support.v7.widget.RecyclerView>
+
+
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+
+        android:id="@+id/second_banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-6680942670958253/5712159550">
+    </com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/instead_of_add2"
+        android:text="@string/no_internet"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/white_background"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:visibility="gone"/>
+
+
+
 
 </LinearLayout>

@@ -29,7 +29,7 @@ public class StartingActivity extends AppCompatActivity {
         setContentView(R.layout.starting_activity);
 
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.splash);
-
+        mp.setVolume(0.7f,0.7f);
 
         //Calling  method i made to rotate the image
         clockwise();
@@ -53,11 +53,10 @@ public class StartingActivity extends AppCompatActivity {
                     // This method will be executed once the timer is over
                     // Start your app main activity
                     // close this activity
-
-                    mp.stop();
-                    mp.release();
                     Intent intent = new Intent(StartingActivity.this, CategoryListsContainerActivity.class);
                     startActivity(intent);
+                    mp.stop();
+                    mp.release();
                     finish();
                 }
             }, SPLASH_TIME_OUT);

@@ -1,19 +1,11 @@
 package com.abbisqq.myapplication.activities;
 
-
-
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.provider.Settings;
-import android.support.v7.app.ActionBar;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.abbisqq.myapplication.R;
 import com.abbisqq.myapplication.fragments.CategoryFragment;
@@ -22,6 +14,7 @@ import com.abbisqq.myapplication.fragments.CategoryFragment;
 public class CategoryListsContainerActivity extends AppCompatActivity {
 
 
+    MediaPlayer mp,negative;
     LayoutInflater inflater;
     AlertDialog dialog;
 
@@ -30,6 +23,9 @@ public class CategoryListsContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.categoty_lists_container_activity);
 
+
+        mp = MediaPlayer.create(this, R.raw.splashlow);
+        negative = MediaPlayer.create(this, R.raw.fail);
         inflater = getLayoutInflater();
 
         //animation from left to right
@@ -42,8 +38,8 @@ public class CategoryListsContainerActivity extends AppCompatActivity {
                     .replace(R.id.recycler_view_container, new CategoryFragment())
                     .commit();
         }
-
     }
+
 
 
     @Override
@@ -57,22 +53,33 @@ public class CategoryListsContainerActivity extends AppCompatActivity {
            dialog = builder.create();
            dialog.setCanceledOnTouchOutside(false);
 
+
        }
         dialog.show();
     }
 
     public void exitClicked(View view) {
         finish();
+        if(mp!=null) {
+            mp.stop();
+            mp.release();
+        }
+        if(negative!=null) {
+            negative.stop();
+            negative.release();
+        }
         System.exit(0);
     }
 
     public void cancelClicked(View view) {
+        negative.start();
         dialog.cancel();
     }
 
 
 
     public void goBack(View view) {
+        mp.start();
         onBackPressed();
     }
 

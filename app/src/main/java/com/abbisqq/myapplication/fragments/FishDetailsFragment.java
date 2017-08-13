@@ -3,6 +3,7 @@ package com.abbisqq.myapplication.fragments;
 
 import android.app.Dialog;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -58,7 +59,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
     private String mBreed;
     private String mOver;
     private String mWater;
-    Toast myToast;
+
 
 
 
@@ -75,7 +76,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
     private Toolbar bar;
     LayoutInflater alert_inflater;
     Dialog dialog;
-
+    MediaPlayer mp;
 
 
     public FishDetailsFragment() {
@@ -157,6 +158,8 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
 
 
+        mp = MediaPlayer.create(getContext(), R.raw.splashlow);
+
 
 
         alert_inflater =  getActivity().getLayoutInflater();
@@ -179,7 +182,8 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
         Picasso.with(getContext()).load(R.drawable.measure).fit().into(measureButton);
 
-        Picasso.with(getContext()).load(mImage).fit().placeholder(R.drawable.loading_animation).into(fishImage);
+        Picasso.with(getContext()).load(mImage).fit().placeholder(R.drawable.loading_animation)
+                .error(R.drawable.error_image).into(fishImage);
 
         TextView sciNameTV = (TextView) view.findViewById(R.id.sciName_tv);
         sciNameTV.setText(String.format("%s%s", getString(R.string.scientific_name), mSci));
@@ -282,7 +286,7 @@ public class FishDetailsFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-
+        mp.start();
         if ( v == measureButton ) {
             // Handle clicks for measureButton
             // cm to inch

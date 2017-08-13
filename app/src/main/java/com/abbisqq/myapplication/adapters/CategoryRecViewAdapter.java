@@ -30,6 +30,8 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
 
     public  interface ItemClickCallBack {
         void onItemClick(int p);
+
+        void onLongClick(int p);
     }
 
 
@@ -68,7 +70,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
         return listData.size();
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
         ImageView caregory_imageView;
         TextView caregory_textView;
@@ -82,6 +84,7 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
 
             container = itemView.findViewById(R.id.fish_category_container);
             container.setOnClickListener(this);
+            container.setOnLongClickListener(this);
 
 
         }
@@ -93,8 +96,24 @@ public class CategoryRecViewAdapter extends RecyclerView.Adapter<CategoryRecView
                 itemClickCallBack.onItemClick(getAdapterPosition());
             }
         }
+        @Override
+        public boolean onLongClick(View view) {
+            if (view.getId() == R.id.fish_category_container) {
+                //gets the position of the item hat was clicked
+                itemClickCallBack.onLongClick(getAdapterPosition());
+                return true;
+            }else{
+                return false;
+            }
+
+        }
+    }
+
+
+
 
     }
 
 
-}
+
+
